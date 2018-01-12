@@ -10,6 +10,21 @@ namespace GreenCone
     {
         static void Main(string[] args)
         {
+
+            using (var ctx = new ToDoListContext())
+
+            {
+
+                Console.WriteLine("Enter a To Do item:");
+                string newItem = Console.ReadLine();
+                ToDoList items = new ToDoList() { ToDoItemContent = newItem, ToDoItemDateCompleted = DateTime.Now };
+                ctx.ToDoItems.Add(items);
+                ctx.SaveChanges();
+            }
+
+
         }
     }
+
 }
+
